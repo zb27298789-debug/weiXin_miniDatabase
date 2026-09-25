@@ -1,0 +1,95 @@
+@import '../../app.wxss';
+
+.field-block {
+  margin-bottom: 20rpx;
+}
+
+.field-label {
+  font-size: 28rpx;
+  margin-bottom: 10rpx;
+  color: #334155;
+  font-weight: 600;
+}
+
+.picker-box {
+  width: 100%;
+  border: 1rpx solid #dfe7f1;
+  border-radius: 12rpx;
+  background: #f9fbff;
+  padding: 18rpx 20rpx;
+  font-size: 28rpx;
+}
+
+.button-row {
+  display: flex;
+  gap: 16rpx;
+  flex-wrap: wrap;
+  margin-top: 16rpx;
+}
+
+.export-name-row {
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
+}
+
+.export-suffix {
+  font-size: 28rpx;
+  color: #64748b;
+}
+
+.preview-card {
+  min-height: 420rpx;
+}
+
+.preview-list {
+  max-height: 560rpx;
+}
+
+.preview-item {
+  border: 1rpx solid #e8edf5;
+  border-radius: 16rpx;
+  padding: 18rpx;
+  margin-bottom: 18rpx;
+  background: #f8fbff;
+}
+
+.preview-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16rpx;
+  font-weight: 600;
+}
+
+.preview-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10rpx 14rpx;
+}
+
+.preview-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 4rpx;
+  background: #fff;
+  border-radius: 10rpx;
+  padding: 10rpx 12rpx;
+}
+
+.cell-key {
+  color: #64748b;
+  font-size: 22rpx;
+}
+
+.cell-value {
+  font-size: 26rpx;
+  color: #0f172a;
+  word-break: break-word;
+}
+
+.small-btn {
+  min-width: 100rpx;
+  height: 52rpx;
+  font-size: 24rpx;
+}

@@ -1,0 +1,27 @@
+{
+  "pages": [
+    "pages/dataDefine/dataDefine",
+    "pages/dataInput/dataInput"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#2d8cff",
+    "navigationBarTitleText": "MiniDatabase",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "color": "#7A7E83",
+    "selectedColor": "#1296db",
+    "backgroundColor": "#fff",
+    "list": [
+      {
+        "pagePath": "pages/dataDefine/dataDefine",
+        "text": "字段定义"
+      },
+      {
+        "pagePath": "pages/dataInput/dataInput",
+        "text": "数据录入"
+      }
+    ]
+  }
+}

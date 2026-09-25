@@ -1,0 +1,93 @@
+@import '../../app.wxss';
+
+page {
+  min-height: 100vh;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 16rpx;
+}
+
+button {
+  margin: 0;
+}
+
+.picker-box {
+  flex: 1;
+}
+
+.type-row {
+  align-items: center;
+}
+
+.type-label {
+  font-size: 28rpx;
+  color: #475569;
+}
+
+.type-options {
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12rpx;
+}
+
+.type-chip {
+  padding: 12rpx 24rpx;
+  border-radius: 999rpx;
+  border: 1rpx solid #dfe7f1;
+  background: #f1f5fb;
+  color: #475569;
+  font-size: 26rpx;
+}
+
+.type-chip.active {
+  border-color: #2d8cff;
+  background: #2d8cff;
+  color: #fff;
+}
+
+.precision-box {
+  width: 100%;
+}
+
+.field-item {
+  justify-content: space-between;
+}
+
+.field-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.field-actions {
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
+}
+
+.icon-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 72rpx;
+  width: 72rpx;
+  height: 72rpx;
+  padding: 0;
+  border-radius: 12rpx;
+  background: #eaf3ff;
+  color: #2d8cff;
+  font-size: 36rpx;
+  line-height: 1;
+}
+
+.icon-btn-hover {
+  background: #d3e6ff;
+}
+
+.icon-btn.is-disabled {
+  background: #f1f5fb;
+  color: #c2cdda;
+}

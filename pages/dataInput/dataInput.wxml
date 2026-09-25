@@ -1,0 +1,83 @@
+<view class="container">
+  <view class="card">
+    <view class="section-title">数据录入</view>
+
+    <view wx:for="{{fields}}" wx:key="id" class="field-block">
+      <view class="field-label">{{item.name}}</view>
+
+      <input
+        wx:if="{{item.type === 'number'}}"
+        class="input-box"
+        type="digit"
+        value="{{form[item.id]}}"
+        data-field="{{item.id}}"
+        bindinput="onInputChange"
+      />
+
+      <input
+        wx:if="{{item.type === 'text'}}"
+        class="input-box"
+        type="text"
+        value="{{form[item.id]}}"
+        data-field="{{item.id}}"
+        bindinput="onInputChange"
+      />
+
+      <picker
+        wx:if="{{item.type === 'date'}}"
+        mode="date"
+        value="{{form[item.id] || ''}}"
+        data-field="{{item.id}}"
+        bindchange="onDateChange"
+      >
+        <view class="picker-box">{{form[item.id] || '请选择日期'}}</view>
+      </picker>
+
+      <switch
+        wx:if="{{item.type === 'boolean'}}"
+        checked="{{form[item.id] || false}}"
+        data-field="{{item.id}}"
+        bindchange="onSwitchChange"
+      />
+    </view>
+
+    <view class="field-block">
+      <view class="field-label">导出文件名</view>
+      <view class="export-name-row">
+        <input
+          class="input-box"
+          placeholder="默认为当天日期"
+          value="{{exportFileName}}"
+          bindinput="onExportNameInput"
+        />
+        <view class="export-suffix">.csv</view>
+      </view>
+    </view>
+
+    <view class="button-row">
+      <button class="primary-btn" bindtap="saveRecord">{{selectedIndex !== null ? '更新保存' : '保存'}}</button>
+      <button wx:if="{{selectedIndex !== null}}" class="secondary-btn" bindtap="loadData">新建</button>
+      <button class="secondary-btn" bindtap="exportCsv">导出 CSV</button>
+    </view>
+  </view>
+
+  <view class="card preview-card">
+    <view class="section-title">数据预览</view>
+    <view wx:if="{{records.length === 0}}" class="empty-state">暂无数据</view>
+
+    <scroll-view wx:else scroll-y class="preview-list">
+      <view wx:for="{{records}}" wx:key="index" class="preview-item" bindtap="selectRecord" data-index="{{index}}">
+        <view class="preview-header">
+          <text>{{fields.length > 0 ? (item[fields[0].id] || '未填写') : '未填写'}}</text>
+          <button class="warn-btn small-btn" data-index="{{index}}" catchtap="deleteRecord">删除</button>
+        </view>
+        <view class="preview-grid">
+          <view wx:for="{{fields}}" wx:for-item="field" wx:key="field.id" class="preview-cell">
+            <text class="cell-key">{{field.name}}</text>
+            <text class="cell-value">{{item[field.id] || ''}}</text>
+          </view>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+</view>

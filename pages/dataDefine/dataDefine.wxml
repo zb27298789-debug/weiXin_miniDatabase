@@ -1,0 +1,57 @@
+<view class="container">
+  <view class="card">
+    <view class="section-title">字段定义</view>
+
+    <view class="row">
+      <input
+        class="input-box"
+        placeholder="字段名称"
+        value="{{draftName}}"
+        bindinput="onFieldNameInput"
+      />
+    </view>
+
+    <view class="row type-row">
+      <view class="type-label">字段类型</view>
+      <view class="type-options">
+        <view
+          wx:for="{{fieldTypeLabels}}"
+          wx:key="index"
+          class="type-chip {{draftTypeIndex === index ? 'active' : ''}}"
+          data-index="{{index}}"
+          bindtap="onSelectFieldType"
+        >{{item}}</view>
+      </view>
+    </view>
+
+    <view wx:if="{{draftType === 'number'}}" class="row">
+      <picker class="full-width" mode="selector" range="{{[0,1,2,3]}}" value="{{draftPrecision}}" bindchange="onPrecisionChange">
+        <view class="picker-box precision-box">保留 {{draftPrecision}} 位小数</view>
+      </picker>
+    </view>
+
+    <view class="row">
+      <button wx:if="{{editingIndex >= 0}}" class="primary-btn" bindtap="saveField">保存修改</button>
+      <button wx:else class="primary-btn" bindtap="addField">新增字段</button>
+      <button wx:if="{{editingIndex >= 0}}" class="secondary-btn" bindtap="cancelEdit">取消</button>
+    </view>
+  </view>
+
+  <view class="card">
+    <view class="section-title">已定义字段</view>
+    <view wx:if="{{fields.length === 0}}" class="empty-state">暂无字段</view>
+
+    <view wx:for="{{fields}}" wx:key="id" class="row field-item">
+      <view class="field-info">
+        <view>{{item.name}}</view>
+        <view style="font-size: 24rpx; color: #7a8795;">{{item.typeLabel || item.type}} {{item.precision ? '· ' + item.precision + '位小数' : ''}}</view>
+      </view>
+      <view class="field-actions">
+        <view class="icon-btn {{index === 0 ? 'is-disabled' : ''}}" hover-class="icon-btn-hover" data-index="{{index}}" data-direction="up" bindtap="moveField">↑</view>
+        <view class="icon-btn {{index === fields.length - 1 ? 'is-disabled' : ''}}" hover-class="icon-btn-hover" data-index="{{index}}" data-direction="down" bindtap="moveField">↓</view>
+        <button class="secondary-btn" data-index="{{index}}" bindtap="editField">编辑</button>
+        <button wx:if="{{item.id !== 'date'}}" class="warn-btn" data-index="{{index}}" bindtap="deleteField">删除</button>
+      </view>
+    </view>
+  </view>
+</view>
